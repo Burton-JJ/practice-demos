@@ -19,6 +19,9 @@
 		<itextpdf.version>5.5.10</itextpdf.version>
 		<itext-asian.version>5.2.0</itext-asian.version>
 		<flying-saucer-pdf.version>9.0.3</flying-saucer-pdf.version>
+		<freemarker.version>2.3.23</freemarker.version>
+		<jfreechart.version>1.0.13</jfreechart.version>
+		<lombok.version>1.18.6</lombok.version>
 	</properties>
 
 	<modules>
@@ -46,6 +49,24 @@
 				<groupId>org.xhtmlrenderer</groupId>
 				<artifactId>flying-saucer-pdf</artifactId>
 				<version>${flying-saucer-pdf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>${freemarker.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>jfree</groupId>
+				<artifactId>jfreechart</artifactId>
+				<version>${jfreechart.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
