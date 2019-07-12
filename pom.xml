@@ -29,6 +29,7 @@
 	<modules>
 		<module>pdf-demo</module>
         <module>proxydemo</module>
+		<module>monthlycalendar-demo</module>
     </modules>
 
 	<dependencyManagement>
