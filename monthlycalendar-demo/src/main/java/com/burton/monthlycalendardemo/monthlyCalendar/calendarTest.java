@@ -11,7 +11,7 @@ public class calendarTest {
         int month=input.nextInt();
         //先判断year是否是闰年
         boolean Renyear;//定义布尔类型true or false
-        if(year%4==0&&year%100!=0||year%400==0){
+        if(CommonUtil.isRunYear(year)){
             System.out.println(year+"是闰年");
             Renyear=true;
         }
@@ -20,28 +20,7 @@ public class calendarTest {
             Renyear=false;
         }
         //记录当月的天数
-        int day=0;
-        switch (month){
-            case 1:day=31;break;
-            //case 2:day=28 or 29;break;
-            case 3:day=31;break;
-            case 4:day=30;break;
-            case 5:day=31;break;
-            case 6:day=30;break;
-            case 7:day=31;break;
-            case 8:day=31;break;
-            case 9:day=30;break;
-            case 10:day=31;break;
-            case 11:day=30;break;
-            case 12:day=31;break;
-            default:if(Renyear){
-                day=29;
-            }
-            else{
-                day=28;
-            }
-                break;
-        }
+        int day = CommonUtil.getDayAmount(month, Renyear);
         System.out.print(year+"年"+month+"月"+"有"+day+"天"+"\t");
         System.out.println(month+"月份的万年历如下：");
         //统计从1990年到指定日期的天数，1990年1月1日为星期一。
@@ -49,7 +28,7 @@ public class calendarTest {
         //从1990年开始循环，循环次数是：指定年份—1990；
         for(int i=1990;i<year;i++){
             //判断是否是闰年
-            if(i%4==0&&i%100!=0||i%400==0){
+            if(CommonUtil.isRunYear(year)){
                 sum=sum+366;
             }
             else{
