@@ -29,33 +29,23 @@ public class calendarTest {
         for(int i=1990;i<year;i++){
             //判断是否是闰年
             if(CommonUtil.isRunYear(year)){
-                sum=sum+366;
+                sum +=366;
             }
             else{
-                sum=sum+365;
+                sum += 365;
             }
         }
         //统计月份的天数
         for(int i=1;i<month;i++){
-            //大月
-            if(i==1||i==3||i==5||i==7||i==8||i==10||i==12){
-                sum=sum+31;
-            }
-            //小月
-            else if(i==4||i==6||i==9||i==11){
-                sum=sum+30;
-            }
-            //二月
-            else {
-                if(Renyear)
-                    sum=sum+29;
-                else
-                    sum=sum+28;
-            }
+            int dayAmount = CommonUtil.getDayAmount(i, Renyear);
+            sum += dayAmount;
         }
 
         //该公式起始时间是1990年1月1日，且1月1日是星期一。
-        int blank=sum%7+1;//blank开始输出的空格数 +1是从星期天开始；
+        //int blank=sum%7的结果代表我们要计算的月的前一个月最后一天是星期几
+        int blank=sum%7+1;//blank开始输出的空格数 也代表当前月的第一天是星期几
+        System.out.println("---------------");
+        System.out.println(blank);
         System.out.println("星期天\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
 
         int temp=1;

@@ -1,11 +1,10 @@
-package word;
+package com.burton.monthlycalendardemo.wordTable;
 
 import org.apache.poi.xwpf.usermodel.*;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -18,7 +17,13 @@ import java.math.BigInteger;
  * @date 2019/7/1322:12
  */
 public class POIWord {
-    public static void main(String[] args) throws IOException {
+    /**
+     * 创建阅历表
+     * @param weekDayNum 当前月的第一天是星期几
+     * @param monthDayAmount 当前月有几天
+     * @throws IOException
+     */
+    public static void createWordTable(int weekDayNum, int monthDayAmount) throws IOException {
         //新建文件
         XWPFDocument xwpfDocument = new XWPFDocument();
         FileOutputStream fos = new FileOutputStream(new File("D:\\文件\\wordPpt\\month.doc"));
@@ -33,7 +38,7 @@ public class POIWord {
         titleXWPFRun.setFontSize(20);
         //endregion
         //region 标题
-        XWPFTable table = xwpfDocument.createTable(5,7);
+        XWPFTable table = xwpfDocument.createTable(1,7);
         //列宽自动分割
         CTTblWidth tableWidth = table.getCTTbl().addNewTblPr().addNewTblW();
         tableWidth.setType(STTblWidth.DXA);
