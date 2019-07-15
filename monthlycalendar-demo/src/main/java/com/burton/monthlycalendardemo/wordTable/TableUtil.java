@@ -28,7 +28,7 @@ public class TableUtil {
      * @param weekDayNum 当月第一天星期几
      * @param monthDayAmount 当月天数
      */
-    public void exportWordContainTab(String exportFilePath, int weekDayNum, int monthDayAmount){
+    public  void exportWordContainTab(String exportFilePath, int weekDayNum, int monthDayAmount){
         try(OutputStream os = new FileOutputStream(exportFilePath)) {
             XWPFDocument doc = createDocument(weekDayNum, monthDayAmount);
             doc.write(os);
@@ -46,7 +46,7 @@ public class TableUtil {
      * @param monthDayAmount 当月第一天星期几
      * @return
      */
-    public XWPFDocument createDocument(int weekDayNum, int monthDayAmount) {
+    private XWPFDocument createDocument(int weekDayNum, int monthDayAmount) {
         XWPFDocument doc = new XWPFDocument();
         //添加标题
         XWPFParagraph titleParagraph = doc.createParagraph();
@@ -101,30 +101,49 @@ public class TableUtil {
         }
 
         //日子可以排几行
-        int lines = (weekDayNum+monthDayAmount) % 7 +1;
-        for (int j = 0; j< lines; j++) {
-            XWPFTableRow row = table.createRow();
-            //todo
-            for (int i = 0; i<7; i++) {
-                setStyleToFont(row, i, "宋体", 14, String.valueOf(i), false, false, false);
-            }
+        int lines = (weekDayNum + monthDayAmount) % 7 == 0 ? (weekDayNum + monthDayAmount)/7 : (weekDayNum + monthDayAmount)/7 + 1;
+        //第一行特殊处理
+        XWPFTableRow firstRow = table.createRow();
+        int firstRowFinalDay = 7 - weekDayNum;
+        //第一行后几个
+        for (int i = 1; i <= firstRowFinalDay; i++) {
+            setStyleToFont(firstRow, i+weekDayNum - 1, "宋体", 14, String.valueOf(i), false, false, false);
         }
+        XWPFTableRow blankRow = table.createRow();
+        //之后填满的几行
+        for (int j = 0; j < lines - 2; j++) {
+
+            XWPFTableRow row = table.createRow();
+            for (int i = 1; i<=7; i++) {
+                setStyleToFont(row, i-1, "宋体", 14, String.valueOf(firstRowFinalDay + i), false, false, false);
+            }
+            XWPFTableRow blankRow2 = table.createRow();
+            firstRowFinalDay += 7;
+
+        }
+        //最后一行
+        XWPFTableRow row = table.createRow();
+        for (int i = 1; i <= monthDayAmount-firstRowFinalDay; i++) {
+            setStyleToFont(row, i-1, "宋体", 14, String.valueOf(firstRowFinalDay + i), false, false, false);
+        }
+        XWPFTableRow blankRowFinal = table.createRow();
+
         //因为有很多内容是需要动态添加的 所以这个时候就可以在原来的table后追加行
         //也有很多方法可以在行与行之间插入，大家可以去博客里面找
         //下面直接createRow就是在表格最后新增一行
-        XWPFTableRow row2 = table.createRow();
-//        setStyleToFont(row2, 0, "宋体", 14, "内容1", false, false, false);
-//        setStyleToFont(row2, 1, "宋体", 14, "内容2", true, true, true);
-        for (int i = 0; i<7; i++) {
-            setStyleToFont(row2, i, "宋体", 14, String.valueOf(i), false, false, false);
-        }
+//        XWPFTableRow row2 = table.createRow();
+////        setStyleToFont(row2, 0, "宋体", 14, "内容1", false, false, false);
+////        setStyleToFont(row2, 1, "宋体", 14, "内容2", true, true, true);
+//        for (int i = 0; i<7; i++) {
+//            setStyleToFont(row2, i, "宋体", 14, String.valueOf(i), false, false, false);
+//        }
 
-        XWPFTableRow row3 = table.createRow();
-//        setStyleToFont(row2, 0, "宋体", 14, "内容1", false, false, false);
-//        setStyleToFont(row2, 1, "宋体", 14, "内容2", true, true, true);
-        for (int i = 0; i<7; i++) {
-            setStyleToFont(row3, i, "宋体", 14, " ", false, false, false);
-        }
+//        XWPFTableRow row3 = table.createRow();
+////        setStyleToFont(row2, 0, "宋体", 14, "内容1", false, false, false);
+////        setStyleToFont(row2, 1, "宋体", 14, "内容2", true, true, true);
+//        for (int i = 0; i<7; i++) {
+//            setStyleToFont(row3, i, "宋体", 14, " ", false, false, false);
+//        }
 
         //合并列
         //拿到了最后一行的下标 对新追加的行 进行合并列操作

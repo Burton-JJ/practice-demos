@@ -1,5 +1,7 @@
 package com.burton.monthlycalendardemo.monthlyCalendar;
 
+import com.burton.monthlycalendardemo.wordTable.TableUtil;
+
 import java.util.Scanner;
 
 public class calendarTest {
@@ -44,29 +46,31 @@ public class calendarTest {
         //该公式起始时间是1990年1月1日，且1月1日是星期一。
         //int blank=sum%7的结果代表我们要计算的月的前一个月最后一天是星期几
         int blank=sum%7+1;//blank开始输出的空格数 也代表当前月的第一天是星期几
-        System.out.println("---------------");
-        System.out.println(blank);
-        System.out.println("星期天\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
-
-        int temp=1;
-        for(int i=0;i<blank;i++){
-            System.out.print("\t");
-            temp++;
-        }
-        if(temp>7){
-            System.out.println("");
-            temp=1;
-        }
-        for(int i=1;i<=day;i++){
-            if(temp%7==0){
-                System.out.print(i+"\n");//控制换行
-                temp=1;
-            }
-            else{
-                System.out.print(i+"\t");
-                temp++;
-            }
-        }
+        TableUtil tableUtil = new TableUtil();
+        tableUtil.exportWordContainTab("D:\\文件\\wordPpt\\month.doc", blank ,day);
+//        System.out.println("---------------");
+//        System.out.println(blank);
+//        System.out.println("星期天\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
+//
+//        int temp=1;
+//        for(int i=0;i<blank;i++){
+//            System.out.print("\t");
+//            temp++;
+//        }
+//        if(temp>7){
+//            System.out.println("");
+//            temp=1;
+//        }
+//        for(int i=1;i<=day;i++){
+//            if(temp%7==0){
+//                System.out.print(i+"\n");//控制换行
+//                temp=1;
+//            }
+//            else{
+//                System.out.print(i+"\t");
+//                temp++;
+//            }
+//        }
 
     }
 }
