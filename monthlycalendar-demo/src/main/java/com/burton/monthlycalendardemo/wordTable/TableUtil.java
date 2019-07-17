@@ -28,9 +28,9 @@ public class TableUtil {
      * @param weekDayNum 当月第一天星期几
      * @param monthDayAmount 当月天数
      */
-    public  void exportWordContainTab(String exportFilePath, int weekDayNum, int monthDayAmount){
+    public  void exportWordContainTab(String exportFilePath, int weekDayNum, int monthDayAmount, int month){
         try(OutputStream os = new FileOutputStream(exportFilePath)) {
-            XWPFDocument doc = createDocument(weekDayNum, monthDayAmount);
+            XWPFDocument doc = createDocument(weekDayNum, monthDayAmount, month);
             doc.write(os);
             System.out.println("导出成功");
         } catch (Exception e) {
@@ -46,7 +46,7 @@ public class TableUtil {
      * @param monthDayAmount 当月第一天星期几
      * @return
      */
-    private XWPFDocument createDocument(int weekDayNum, int monthDayAmount) {
+    private XWPFDocument createDocument(int weekDayNum, int monthDayAmount, int month) {
         XWPFDocument doc = new XWPFDocument();
         //添加标题
         XWPFParagraph titleParagraph = doc.createParagraph();
@@ -54,7 +54,7 @@ public class TableUtil {
         //设置段落居中
         titleParagraph.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun titleParagraphRun = titleParagraph.createRun();
-        titleParagraphRun.setText("杭州兰悦汽车服务有限公司出车表");
+        titleParagraphRun.setText("杭州兰悦汽车服务有限公司" + month + "出车表");
         titleParagraphRun.setColor("000000");
         titleParagraphRun.setFontSize(22);
         titleParagraphRun.setFontFamily("宋体");
