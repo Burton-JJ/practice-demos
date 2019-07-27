@@ -20,6 +20,10 @@ public class JsoupTest {
 
     //年份正则
     private static final Pattern yearPattern = Pattern.compile("[0-9]{4}");
+    private static final Pattern holidayPattern1 = Pattern.compile("[0-9]{1,2}月[0-9]{1,2}日放假。");
+    private static final Pattern holidayPattern2 = Pattern.compile("[0-9]{1,2}月[0-9]{1,2}日放假，与周末连休。");
+    private static final Pattern holidayPattern3 = Pattern.compile("([0-9]{4}年)?[0-9]{1,2}月[0-9]{1,2}日至([0-9]{4}年)?([0-9]{1,2}月)?[0-9]{1,2}日放假调休");
+
 
     //2018年12月30日至2019年1月1日放假调休
     public static void main(String[] args) throws IOException {
@@ -58,8 +62,20 @@ public class JsoupTest {
             Elements ps = doc.getElementById("UCAP-CONTENT")
                     .getElementsByTag("p");
             for (Element element : ps) {
+                String dateTime;
                 System.out.println(element.text());
+                Matcher matcher = holidayPattern3.matcher(element.text());
+                while(matcher.find()) {
+                    System.out.println("匹配到了");
+                    matcher.group();
+                }
             }
+
+            String date1 = "20190226";
+            String date2 = "2019022601";
+            int i = date2.compareTo(date1);
+            System.out.println(i);
+
         }
     }
 }

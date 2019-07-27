@@ -26,6 +26,7 @@
         <cglib.version>3.2.5</cglib.version>
         <poi.version>3.17</poi.version>
         <jsoup.version>1.8.3</jsoup.version>
+        <jedis.version>3.0.1</jedis.version>
     </properties>
 
     <modules>
@@ -34,6 +35,8 @@
         <module>monthlycalendar-demo</module>
         <module>word-demo</module>
         <module>pachong-demo</module>
+        <module>redis-demo</module>
+        <module>other-demo</module>
     </modules>
 
     <dependencyManagement>
@@ -94,7 +97,11 @@
                 <artifactId>poi</artifactId>
                 <version>${poi.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
