@@ -10,6 +10,9 @@ import redis.clients.jedis.Jedis;
  * @date 2019/7/2512:58
  */
 public class HashDemo {
+    /**
+     * jedis.hset会覆盖之前的
+     */
     private static Jedis jedis;
     static {
         jedis = new Jedis("127.0.0.1", 6379);

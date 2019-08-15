@@ -4,10 +4,9 @@ import java.math.BigDecimal;
 
 /*********************************
  * <p> 文件名称: BigDecimalUsing
- * <p> 系统名称：交易银行系统V1.0
  * <p> 模块名称：com.burton
  * <p> 功能说明: Bigdecimal使用踩坑
- * <p> 开发人员：jiangjun25372
+ * <p> 开发人员：jiangjun
  * <p> 开发时间：2019/7/30
  * <p> 修改记录：程序版本   修改日期    修改人员   修改单号   修改说明
  **********************************/
@@ -67,13 +66,17 @@ public class BigDecimalUsing {
          */
 
         //四舍五入 设置小数点位数
-        BigDecimal b = new BigDecimal("12.1300456");
-        //第一个参数为小数点位数
-        BigDecimal c = b.setScale(5,BigDecimal.ROUND_HALF_UP);
-        System.out.println(c);
+//        BigDecimal b = new BigDecimal("12.1300456");
+//        //第一个参数为小数点位数
+//        BigDecimal c = b.setScale(5,BigDecimal.ROUND_HALF_UP);
+//        System.out.println(c);
         /**
          * 结果：
          * 12.13005
          */
+        BigDecimal a = new BigDecimal("10.00");
+        BigDecimal b = null;
+        BigDecimal subtract = a.subtract(b);
+        System.out.println(subtract);
     }
 }

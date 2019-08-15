@@ -6,18 +6,17 @@ import java.util.Vector;
 
 /*********************************
  * <p> 文件名称: ContentCombine
- * <p> 系统名称：交易银行系统V1.0
  * <p> 模块名称：com.burton
  * <p> 功能说明: 不同文件内容合并
- * <p> 开发人员：jiangjun25372
+ * <p> 开发人员：jiangjun
  * <p> 开发时间：2019/7/31
  * <p> 修改记录：程序版本   修改日期    修改人员   修改单号   修改说明
  **********************************/
 public class ContentCombine {
     public static void main(String[] args) {
         ContentCombine contentCombine = new ContentCombine();
-        String inputPacPath = "E:\\Hundsun Files\\AssetPool\\齐鲁资产池\\s1表";
-        String outputPath = "E:\\Hundsun Files\\AssetPool\\齐鲁资产池\\s1表\\all.sql";
+        String inputPacPath = "";
+        String outputPath = "";
         try {
             contentCombine.combine(inputPacPath, outputPath);
         } catch (IOException e) {
