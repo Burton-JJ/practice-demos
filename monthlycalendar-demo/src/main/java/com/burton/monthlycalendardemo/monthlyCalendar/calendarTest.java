@@ -47,7 +47,7 @@ public class calendarTest {
         //int firstDayWeekk=sum%7的结果代表我们要计算的月的前一个月最后一天是星期几
         int firstDayWeek = sum%7+1;//firstDayWeekk开始输出的空格数 也代表当前月的第一天是星期几
         TableUtil tableUtil = new TableUtil();
-        tableUtil.exportWordContainTab("F:\\LYcalendar\\兰悦" + month + "月出车表", firstDayWeek ,day ,month);
+        tableUtil.exportWordContainTab("F:\\LYcalendar\\兰悦" + month + "月出车表.docx", firstDayWeek ,day ,month);
 //        System.out.println("---------------");
 //        System.out.println(blank);
 //        System.out.println("星期天\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
