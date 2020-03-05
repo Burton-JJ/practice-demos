@@ -23,6 +23,7 @@ public class POIWord {
         XWPFDocument xwpfDocument = new XWPFDocument();
         FileOutputStream fos = new FileOutputStream(new File("D:\\文件\\wordPpt\\month.doc"));
         //region 标题
+        //sit-xxx
         //新建标题段落
         XWPFParagraph titleParagrah = xwpfDocument.createParagraph();
         //设置居中
