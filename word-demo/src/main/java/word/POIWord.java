@@ -25,6 +25,7 @@ public class POIWord {
         //region 标题
         //新建标题段落
         XWPFParagraph titleParagrah = xwpfDocument.createParagraph();
+        //sit-A测测测测
         //设置居中
         titleParagrah.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun titleXWPFRun = titleParagrah.createRun();
