@@ -4,7 +4,7 @@ package word;
  * @author Burton
  * @title: WeekDays
  * @projectName practice-demos
- * @description:
+ * @description: SIT-B修改
  * @date 2019/7/14 23:36
  */
 public enum WeekDays {
@@ -54,4 +54,6 @@ public enum WeekDays {
     public void setWeekDayDesc(String weekDayDesc) {
         this.weekDayDesc = weekDayDesc;
     }
+
+    /**sit-b修改**/
 }
