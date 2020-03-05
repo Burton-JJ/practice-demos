@@ -24,7 +24,7 @@ public class POIWord {
         FileOutputStream fos = new FileOutputStream(new File("D:\\文件\\wordPpt\\month.doc"));
         //region 标题
         //新建标题段落
-        //sit-A 测试
+        //sit-A测测
         XWPFParagraph titleParagrah = xwpfDocument.createParagraph();
         //设置居中
         titleParagrah.setAlignment(ParagraphAlignment.CENTER);
