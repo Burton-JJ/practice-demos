@@ -4,7 +4,7 @@ package word;
  * @author Burton
  * @title: WeekDays
  * @projectName practice-demos
- * @description:SIT-A做了修改
+ * @description:SIT-A做了2318修改
  * @date 2019/7/14 23:36
  */
 public enum WeekDays {
