@@ -18,6 +18,7 @@ import java.math.BigInteger;
  */
 public class POIWord {
     public static void main(String[] args) throws IOException {
+        //todo git sit-A测试
         //新建文件
         XWPFDocument xwpfDocument = new XWPFDocument();
         FileOutputStream fos = new FileOutputStream(new File("D:\\文件\\wordPpt\\month.doc"));
